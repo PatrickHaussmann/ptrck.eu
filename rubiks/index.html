@@ -1,0 +1,126 @@
+---
+---
+<style>
+    svg {
+        fill: lightgray;
+        height: 150px;
+    }
+
+    .bul #bul,
+    .bu #bu,
+    .bur #bur,
+    .lub #lub,
+    .ubl #ubl,
+    .ub #ub,
+    .urb #urb,
+    .rub #rub,
+    .lu #lu,
+    .ul #ul,
+    .u #u,
+    .ur #ur,
+    .ru #ru,
+    .lfu #lfu,
+    .ufl #ufl,
+    .uf #uf,
+    .ufr #ufr,
+    .rfu #rfu,
+    .ful #ful,
+    .fu #fu,
+    .fur #fur {
+        fill: yellow;
+    }
+
+    html {
+        font-size: 1.5rem;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .row>div {
+        width: 50%;
+    }
+
+    .row>div>div {
+        padding-bottom: 1rem;
+    }
+
+    .row svg {
+        float: right;
+        padding-right: 1rem;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .hinweis{
+        color: grey;
+        font-size: smaller;
+    }
+</style>
+
+<h1>OLL</h1>
+<div class="ub ul u ur uf">
+
+    <h2>Keine gelbe Ecke oben</h2>
+
+    <h3>Car</h3>
+    <div class="row">
+        <div class="bul bur ful fur">
+            {% include_relative rubiks-top.svg %}
+        </div>
+        <div>
+            <div class="algorithmus">F (R U R‘ U‘) (R U R‘ U‘) (R U R‘ U‘) F‘</div>
+        </div>
+    </div>
+
+    <h3>Blinker</h3>
+    <div class="row">
+        <div class="bur lub lfu fur">
+            {% include_relative rubiks-top.svg %}
+        </div>
+        <div>
+            <div class="algorithmus">(f R U R‘ U‘ f‘) (F R U R‘ U‘ F‘)</div>
+            <div class="alternative">Fisch + U’ + Fisch</div>
+            <div class="alternative">R U2 (R2 U’ R2 U’) R2 U2 R</div>
+        </div>
+    </div>
+
+
+    <h2>Zwei gelbe Ecken oben</h2>
+
+    <h3>Headlights</h3>
+    <div class="row">
+        <div class="ubl urb ful fur">
+            {% include_relative rubiks-top.svg %}
+        </div>
+        <div>
+            <div class="algorithmus">(R2 D) (R‘ U2 R D‘) (R‘ U2 R‘)</div>
+            <div class="alternative">(R’ F2) (R U2 R U2) (R’ F2) (R U2 R’)</div>
+        </div>
+    </div>
+
+    <h3>Chameleon</h3>
+    <div class="row">
+        <div class="bul bur ufl ufr">
+            {% include_relative rubiks-top.svg %}
+        </div>
+        <div>
+            <div class="algorithmus">(R U R D) (R’ U’ R D’) R2</div>
+        </div>
+    </div>
+
+    <h3>Bowtie</h3>
+    <div class="row">
+        <div class="ubl rub ufr ful">
+            {% include_relative rubiks-top.svg %}
+        </div>
+        <div>
+            <div class="algorithmus">(R U2 R D) (R’ U2 R D’) R2<br><span class="hinweis">Ist Rückwärtsversion von
+                    Headlights</span>
+            </div>
+        </div>
+    </div>
