@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blogs to read</title>
+        <style>
+            body{
+                font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-size: 1rem;
+                padding-top: 3rem;
+                padding-bottom: 10rem;
+            }
+            .indent{
+                margin-left: 10rem;
+            }
+            .content{
+                margin-left: 10vw;
+                margin-right: 10vw;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                min-width: max-content;
+            }
+            .heading{
+                text-align: center;                
+            }
+            hr {
+                margin-top: 3rem;
+            }
+            a, .a{
+                text-decoration: none;
+                color: #111111;
+                position: relative;
+                white-space: nowrap;
+                outline: none;
+            }
+            a::after, .a::after{
+                content: "";
+                position: absolute;
+                z-index: -1;
+                top: 80%;
+                bottom: 0;
+                left: -0.05em;
+                right: -0.05em;
+                transition: top 180ms cubic-bezier(0, .8, .1, 1);
+                background-color: rgba(65,80,230,0.5);
+            }
+            @media (hover: hover) {
+                a:hover::after, .a:hover::after {
+                    top: 0%;
+                }   
+            }
+            a.invisible::after, h1>a::after, h2>a::after, h3>a::after, h4>a::after, h5>a::after, h6>a::after{
+                display: none;
+            }
+            br {
+                display: block; /* makes it have a width */
+                content: ""; /* clears default height */
+                margin-top: 0.15rem;
+            }
+            .collapsible > input[type='checkbox'] {
+                display: none;
+            }
+            .collapsible > label {
+                cursor: pointer;
+                transition: all 0.25s ease-out;
+            }
+            .collapsible > label::before {
+                content: ' ';
+                display: inline-block;
+                border-top: 0.3rem solid transparent;
+                border-bottom: 0.3rem solid transparent;
+                border-left: 0.3rem solid currentColor;
+                vertical-align: middle;
+                margin-right: 0.3rem;
+                transform: translateY(-0.1rem);
+                transition: transform .2s ease-out;
+            }
+            .collapsible > input:checked + label::before {
+                transform: rotate(90deg) translateX(-3px);
+            }
+            .collapsible > .collapsible-content {
+                max-height: 0px;
+                overflow: hidden;
+                transition: max-height .25s ease-in-out;
+            }
+            .collapsible > input:checked + label  + .collapsible-content {
+                max-height: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="heading">
+            <h1>Blogs to read</h1>
+        </div>
+        <div class="content">
+            <h2>Cryptography / Security</h2>
+                <div class="indent">
+                    <a href="https://blog.cloudflare.com/">Cloudflare</a>
+                    <br>
+                    <a href="https://netzpolitik.org/">netzpolitik.org</a>
+                    <br> 
+                    <a href="https://netzpolitik.org/dossiers-recherchen/">netzpolitik.org dossiers und recherchen</a>
+                    <br>
+                    <h3>to try</h3>
+                        <div class="indent">
+                            <a href="https://blog.cryptographyengineering.com/useful-cryptography-resources/">cryptographyengineering</a>
+                            <br>
+                            <a href="https://www.schneier.com/">Schneier on Security</a>          
+                            <br>
+                            <a href="https://www.cryptomathic.com/news-events/blog">Cryptomathic</a>
+                            <br>
+                            <a href="https://rdist.root.org/">rdist</a>
+                            <br>
+                            <a href="http://bristolcrypto.blogspot.com/">Bristol Cryptography Blog</a>
+                            <br>
+                            <a href="http://travisgoodspeed.blogspot.com/">Travis Goodspeed's Blog</a>
+                            <br>
+                            <a href="https://www.lightbluetouchpaper.org/">lightbluetouchpaper</a>
+                            <br>
+                            <a href="https://goodenoughsecurity.blogspot.com/">goodenoughsecurity</a>
+                            <br>
+                            <a href="https://cryptologie.net/">cryptologie.net</a>
+                            <br>
+                            <a href="https://security.googleblog.com/">Google Security Blog</a>
+                            <br>
+                            <a href="https://www.esat.kuleuven.be/cosic/category/blog/">Cosic Cryptography Blog (KU Leuven)</a>
+                            <br>
+                            <a href="https://www.ibm.com/blogs/research/">ibm research</a>
+                            <br>
+                            <a href=""></a>
+                            <br>
+                            <a href=""></a>
+                            <br>
+                            <a href=""></a>
+                            <br>
+                            <a href=""></a>
+                        </div>
+                </div>
+            <!-- <hr> -->
+        </div>
+    </body>
+</html>
