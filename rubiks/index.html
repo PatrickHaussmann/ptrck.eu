@@ -35,12 +35,17 @@
     font-size: 1.5rem;
   }
 
+  body {
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+
   .row {
     display: flex;
     justify-content: space-between;
   }
 
-  .row > div {
+  .row > .col-2 {
     width: 50%;
   }
 
@@ -74,16 +79,20 @@
 
   <h3>Car</h3>
   <div class="row">
-    <div class="bul bur ful fur">{% include_relative rubiks-top.svg %}</div>
-    <div>
+    <div class="col-2 bul bur ful fur">
+      {% include_relative rubiks-top.svg %}
+    </div>
+    <div class="col-2">
       <div class="algorithmus">F (R U R' U') (R U R' U') (R U R' U') F'</div>
     </div>
   </div>
 
   <h3>Blinker</h3>
   <div class="row">
-    <div class="bur lub lfu fur">{% include_relative rubiks-top.svg %}</div>
-    <div>
+    <div class="col-2 bur lub lfu fur">
+      {% include_relative rubiks-top.svg %}
+    </div>
+    <div class="col-2">
       <div class="algorithmus">R U2 (R2 U' R2 U') R2 U2 R</div>
       <div class="alternative">(f R U R' U' f') (F R U R' U' F')</div>
       <div class="alternative">Fisch + U' + Fisch</div>
@@ -94,8 +103,10 @@
 
   <h3>Headlights</h3>
   <div class="row">
-    <div class="ubl urb ful fur">{% include_relative rubiks-top.svg %}</div>
-    <div>
+    <div class="col-2 ubl urb ful fur">
+      {% include_relative rubiks-top.svg %}
+    </div>
+    <div class="col-2">
       <div class="algorithmus">(R2 D) (R' U2 R D') (R' U2 R')</div>
       <div class="alternative">(R' F2) (R U2 R U2) (R' F2) (R U2 R')</div>
     </div>
@@ -103,16 +114,20 @@
 
   <h3>Chameleon</h3>
   <div class="row">
-    <div class="lub rub ufl ufr">{% include_relative rubiks-top.svg %}</div>
-    <div>
+    <div class="col-2 lub rub ufl ufr">
+      {% include_relative rubiks-top.svg %}
+    </div>
+    <div class="col-2">
       <div class="algorithmus">(R U R D) (R' U' R D') R2</div>
     </div>
   </div>
 
   <h3>Bowtie</h3>
   <div class="row">
-    <div class="ubl rub ufr ful">{% include_relative rubiks-top.svg %}</div>
-    <div>
+    <div class="col-2 ubl rub ufr ful">
+      {% include_relative rubiks-top.svg %}
+    </div>
+    <div class="col-2">
       <div class="algorithmus">
         (R U2 R D) (R' U2 R D') R2<br /><span class="hinweis"
           >Ist Rückwärtsversion von Headlights</span
