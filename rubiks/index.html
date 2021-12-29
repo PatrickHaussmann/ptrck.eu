@@ -42,10 +42,15 @@
 
   .row {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .row > .col-2 {
     width: 50%;
+  }
+
+  .row > div {
+    margin-bottom: 1rem;
   }
 
   .row > div > div {
@@ -150,5 +155,4 @@
     <div class="urb ubl fur ful">{% include_relative rubiks-top.svg %}</div>
     <div class="ubl ufr rub ful">{% include_relative rubiks-top.svg %}</div>
   </div>
-
 </div>
