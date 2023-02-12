@@ -29,7 +29,7 @@
           <div class="buttons has-addons mb-0 mr-6">
             <a id="page" class="button is-primary mb-0">
               <p class="mr-2">Seite</p>
-              <p id="page-number" class="has-text-weight-bold is-size-4"></p>
+              <p id="page-number" class="has-text-weight-bold is-size-4">1</p>
             </a>
             <a
               id="page-ext"
@@ -112,24 +112,20 @@
       const forwardBtn = document.getElementById("forward");
       const datepickerEl = document.getElementById("datepicker");
 
-      function updatePageLink() {
-        if (page > 1) searchParams.set("page", page);
-        else searchParams.delete("page");
+      function updatePageLink(setLocation = true) {
+        searchParams.set("date", datepicker.getDate("yyyy-mm-dd"));
+        searchParams.set("page", page);
 
-        if ((new Date() - datepicker.getDate()) / (1000 * 60 * 60 * 24) > 1)
-          searchParams.set("date", datepicker.getDate("yyyy-mm-dd"));
-        else searchParams.delete("date");
-
-        let newLocation =
+        const newLocation =
           window.location.protocol +
           "//" +
           window.location.host +
-          window.location.pathname;
+          window.location.pathname +
+          "?" +
+          searchParams.toString();
 
-        if (Array.from(searchParams).length > 0)
-          newLocation += "?" + searchParams.toString();
-
-        window.history.pushState({ path: newLocation }, "", newLocation);
+        if (setLocation)
+          window.history.pushState({ path: newLocation }, "", newLocation);
 
         const pageUrl = `https://www-faz-biblionet-de.emedien.ub.uni-muenchen.de/fazPortal/loadFazPage?id=${
           datepicker.getDate().getDay() == 0 ? "FAS" : "FAZ"
@@ -163,7 +159,7 @@
         updatePageLink();
       });
 
-      updatePageLink();
+      updatePageLink(false);
     </script>
   </body>
 </html>
