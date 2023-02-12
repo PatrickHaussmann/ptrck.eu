@@ -99,7 +99,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/locales/de.js"></script>
     <script>
       const searchParams = new URLSearchParams(document.location.search);
-      const date = new Date(searchParams.get("date")) || new Date();
+      const date = new Date(searchParams.get("date") || new Date());
       let page = searchParams.get("page") || 1;
 
       const pageA = document.getElementById("page");
