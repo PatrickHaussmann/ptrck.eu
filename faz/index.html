@@ -27,7 +27,10 @@
           <button id="back" class="button mr-6">«</button>
 
           <div class="buttons has-addons mb-0 mr-6">
-            <a id="page" class="button is-primary mb-0"></a>
+            <a id="page" class="button is-primary mb-0">
+              <p class="mr-2">Seite</p>
+              <p id="page-number" class="has-text-weight-bold is-size-4"></p>
+            </a>
             <a
               id="page-ext"
               class="button is-light mb-0"
@@ -104,6 +107,7 @@
 
       const pageA = document.getElementById("page");
       const pageExtA = document.getElementById("page-ext");
+      const pageNumberP = document.getElementById("page-number");
       const backBtn = document.getElementById("back");
       const forwardBtn = document.getElementById("forward");
       const datepickerEl = document.getElementById("datepicker");
@@ -127,7 +131,7 @@
         pageA.href = url;
         pageExtA.href = url;
 
-        pageA.innerText = `Seite ${page}`;
+        pageNumberP.innerText = page;
       }
 
       const datepicker = new Datepicker(datepickerEl, {
