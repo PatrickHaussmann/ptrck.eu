@@ -153,6 +153,7 @@
       datepicker.setDate(date);
 
       datepickerEl.addEventListener("changeDate", (event) => {
+        page = 1;
         updatePageLink();
       });
       backBtn.addEventListener("click", () => {
