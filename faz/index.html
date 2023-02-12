@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FAZ</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker-bulma.min.css"
+    />
+    <!-- <style>
+      body {
+        font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+        font-size: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 10rem;
+      }
+      .content {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        min-width: max-content;
+      }
+      .heading {
+        text-align: center;
+      }
+      hr {
+        margin-top: 3rem;
+      }
+      a,
+      .a {
+        text-decoration: none;
+        color: #111111;
+        position: relative;
+        white-space: nowrap;
+        outline: none;
+      }
+      a::after,
+      .a::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 80%;
+        bottom: 0;
+        left: -0.05em;
+        right: -0.05em;
+        transition: top 180ms cubic-bezier(0, 0.8, 0.1, 1);
+        background-color: rgba(65, 80, 230, 0.5);
+      }
+      @media (hover: hover) {
+        a:hover::after,
+        .a:hover::after {
+          top: 0%;
+        }
+      }
+      a.invisible::after,
+      h1 > a::after,
+      h2 > a::after,
+      h3 > a::after,
+      h4 > a::after,
+      h5 > a::after,
+      h6 > a::after {
+        display: none;
+      }
+      br {
+        display: block; /* makes it have a width */
+        content: ""; /* clears default height */
+        margin-top: 0.15rem;
+      }
+    </style> -->
+    <style>
+      .w-4 {
+        width: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <h1 class="title is-1">FAZ</h1>
+    </div>
+
+    <div class="section">
+      <div class="level">
+        <div class="level-item">
+          <button id="back" class="button mr-6">«</button>
+
+          <div class="buttons has-addons mb-0 mr-6">
+            <a id="page" class="button is-primary mb-0"></a>
+            <a
+              id="page-ext"
+              class="button is-light mb-0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="/external.svg" class="w-4" />
+            </a>
+          </div>
+
+          <button id="forward" class="button">»</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section"></div>
+
+    <div class="section">
+      <div class="level">
+        <div class="level-item">
+          <div id="datepicker"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="level">
+        <div class="level-item">
+          <div class="buttons level-item has-addons mb-0 mr-6">
+            <a
+              class="button is-info mb-0"
+              href="https://login.emedien.ub.uni-muenchen.de/login?qurl=https://ptrck.eu/faz"
+            >
+              Login
+            </a>
+            <a
+              id="page-ext"
+              class="button is-light mb-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://login.emedien.ub.uni-muenchen.de/login?qurl=https://ptrck.eu/faz"
+            >
+              <img src="/external.svg" class="w-4" />
+            </a>
+          </div>
+
+          <div class="buttons level-item has-addons mb-0">
+            <a
+              class="button is-info mb-0"
+              href="https://login.emedien.ub.uni-muenchen.de/login"
+            >
+              Login2
+            </a>
+            <a
+              id="page-ext"
+              class="button is-light mb-0"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://login.emedien.ub.uni-muenchen.de/login"
+            >
+              <img src="/external.svg" class="w-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/locales/de.js"></script>
+    <script>
+      const searchParams = new URLSearchParams(document.location.search);
+      const date = new Date(searchParams.get("date")) || new Date();
+      let page = searchParams.get("page") || 1;
+
+      const pageA = document.getElementById("page");
+      const pageExtA = document.getElementById("page-ext");
+      const backBtn = document.getElementById("back");
+      const forwardBtn = document.getElementById("forward");
+      const datepickerEl = document.getElementById("datepicker");
+
+      function updatePageLink() {
+        searchParams.set("page", page);
+        searchParams.set("date", datepicker.getDate("yyyy-mm-dd"));
+
+        const newurl =
+          window.location.protocol +
+          "//" +
+          window.location.host +
+          window.location.pathname +
+          "?" +
+          searchParams.toString();
+        window.history.pushState({ path: newurl }, "", newurl);
+
+        const url = `https://www-faz-biblionet-de.emedien.ub.uni-muenchen.de/fazPortal/loadFazPage?id=${
+          datepicker.getDate().getDay() == 0 ? "FAS" : "FAZ"
+        }_${datepicker.getDate("yyyymmdd")}_${page}`;
+        pageA.href = url;
+        pageExtA.href = url;
+
+        pageA.innerText = `Seite ${page}`;
+      }
+
+      const datepicker = new Datepicker(datepickerEl, {
+        calendarWeeks: true,
+        //daysOfWeekDisabled: [6],
+        daysOfWeekHighlighted: [0],
+        maxDate: new Date(),
+        maxView: 0,
+        language: "de",
+        todayHighlight: true,
+        format: "D dd.mm.yyyy",
+      });
+      datepicker.setDate(date);
+
+      datepickerEl.addEventListener("changeDate", (event) => {
+        updatePageLink();
+      });
+      backBtn.addEventListener("click", () => {
+        if (page == 1) return;
+        page--;
+        updatePageLink();
+      });
+      forwardBtn.addEventListener("click", () => {
+        page++;
+        updatePageLink();
+      });
+
+      updatePageLink();
+    </script>
+  </body>
+</html>
