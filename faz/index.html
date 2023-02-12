@@ -113,23 +113,29 @@
       const datepickerEl = document.getElementById("datepicker");
 
       function updatePageLink() {
-        searchParams.set("page", page);
-        searchParams.set("date", datepicker.getDate("yyyy-mm-dd"));
+        if (page > 1) searchParams.set("page", page);
+        else searchParams.delete("page");
 
-        const newurl =
+        if ((new Date() - datepicker.getDate()) / (1000 * 60 * 60 * 24) > 1)
+          searchParams.set("date", datepicker.getDate("yyyy-mm-dd"));
+        else searchParams.delete("date");
+
+        let newLocation =
           window.location.protocol +
           "//" +
           window.location.host +
-          window.location.pathname +
-          "?" +
-          searchParams.toString();
-        window.history.pushState({ path: newurl }, "", newurl);
+          window.location.pathname;
 
-        const url = `https://www-faz-biblionet-de.emedien.ub.uni-muenchen.de/fazPortal/loadFazPage?id=${
+        if (Array.from(searchParams).length > 0)
+          newLocation += "?" + searchParams.toString();
+
+        window.history.pushState({ path: newLocation }, "", newLocation);
+
+        const pageUrl = `https://www-faz-biblionet-de.emedien.ub.uni-muenchen.de/fazPortal/loadFazPage?id=${
           datepicker.getDate().getDay() == 0 ? "FAS" : "FAZ"
         }_${datepicker.getDate("yyyymmdd")}_${page}`;
-        pageA.href = url;
-        pageExtA.href = url;
+        pageA.href = pageUrl;
+        pageExtA.href = pageUrl;
 
         pageNumberP.innerText = page;
       }
